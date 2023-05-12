@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Board } from "../components/board";
+import './index.css'
 
 export function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)])
@@ -27,19 +28,23 @@ export function Game() {
 
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button onClick={() => jumpTo(move)} className="move">{description}</button>
       </li>
     )
   })
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-      </div>
+    <div className="container">
+      <h1 className="title">Jogo da Velha</h1>
 
-      <div className="game-info">
-        <ol>{moves}</ol>
+      <div className="game">
+        <div className="game-board">
+          <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        </div>
+
+        <div className="game-info">
+          <ol>{moves}</ol>
+        </div>
       </div>
     </div>
   )
